@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import SettingsIcon from '@material-ui/icons/Settings';
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -80,6 +81,10 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+const MEAL_ROUTES = ['By category', 'By area', 'By ingredient', 'Search by name'];
+const YUMMY_ROUTES = ['Yummied!', 'TO-Yummy-DO', 'Friends'];
+const APP_ROUTES = ['Settings', 'About'];
+
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
@@ -134,7 +139,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {MEAL_ROUTES.map((text, index) => (
             <ListItem button key={text} component={Link} to={"/" + text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -143,7 +148,16 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {YUMMY_ROUTES.map((text, index) => (
+            <ListItem button key={text}  component={Link} to={"/" + text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {APP_ROUTES.map((text, index) => (
             <ListItem button key={text}  component={Link} to={"/" + text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
